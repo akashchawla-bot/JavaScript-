@@ -42,4 +42,17 @@ const jsUser = {
 
 
 // const tinder = new Object();
+
+const tinder = {}
+tinder.id = "12345";
+tinder.name = "Tinder";
+tinder.age = 5;
+tinder.location = "San Francisco";
+tinder.isActive = true;
+
 // console.log(tinder);
+
+const regularUser = {
+    email : "Some@chatgpt.com",
+    
+}

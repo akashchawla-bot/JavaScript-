@@ -180,21 +180,21 @@
 // console.log(tinder.hasOwnProperty("id")); // true
 
 
-const course ={
-    course: "JavaScript",
-    duration: "3 months",
-    price: 1000,
-    instructor: "John Doe",
-}
+// const course ={
+//     course: "JavaScript",
+//     duration: "3 months",
+//     price: 1000,
+//     instructor: "John Doe",
+// }
 
-// corse.instructor we can access the instructor property directly
+// // corse.instructor we can access the instructor property directly
 
-const {instructor: instruct} = course; //we can give difftrent easy name insatead of instructor 
+// const {instructor: instruct} = course; //we can give difftrent easy name insatead of instructor 
 
-// console.log(instructor); // John Doe 
-console.log(instruct); // John Doe
+// // console.log(instructor); // John Doe 
+// console.log(instruct); // John Doe
 
-// {
+// // {
 //     name: jstar,
 //     course_name: "JavaScript",
 //     duration: "3 months",

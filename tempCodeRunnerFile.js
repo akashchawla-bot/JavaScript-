@@ -1,4 +1,5 @@
-
-user.welcomeMessage(); // Akash has logged in successfully.
-user.userName = "John";
-user.welcomeM
+f (userLoggedInFromEmail || userLoggedIn) {
+    console.log("You are logged in");
+} else {
+    console.log("You are not logged in");
+}

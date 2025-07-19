@@ -5,6 +5,8 @@
 //     var c = 30
 // }
 
+// const { use } = require("react");
+
 
 // console.log(a); // ReferenceError: a is not defined
 // console.log(b); // ReferenceError: b is not defined
@@ -62,13 +64,69 @@
 
 // console.log(addtwo(5));
 
-// **************************this********************************
+// **************************
+// this and arrow functions
+// ********************************
 
-const user = {
-    userName: "Akash",
-    price: 999,
-welcomeMessage: function() {
-    console.log(`${this.userName} has logged in successfully.`);
-}
-}
+// const user = {
+//     userName: "Akash",
+//     price: 999,
+// welcomeMessage: function() {
+//     console.log(`${this.userName} has logged in successfully.`);
+//     console.log(this);// this refers to the user object
+    
+// }
+// }
 
+// // user.welcomeMessage(); // Akash has logged in successfully.
+// // user.userName = "John";
+// // user.welcomeMessage(); // John has logged in successfully. 
+
+// console.log(this); // In the global context, 'this' refers to the global object (window in browsers, global in Node.js)
+
+
+
+// function ontop(){
+//     let userName = "Akash";
+//     console.log(this.userName); // In the global context, 'this' refers to the global object (window in browsers, global in Node.js)
+// }
+
+// ontop(); // This will log the global object
+
+
+// const user = function() {
+//     let userName = "Akash";
+//     console.log(this.userName);
+// }
+
+// user(); // In the global context, 'this' refers to the global object (window in browsers, global in Node.js)
+
+// const user = () => {
+//     let userName = "Akash";
+//     console.log(this.userName);
+// }
+
+// user(); // In the global context, 'this' refers to the global object (window in browsers, global in Node.js)
+
+// const user = () => {
+//     let userName = "Akash";
+//     console.log(this);
+// }
+
+// user(); // 
+
+// const Add = (num1, num2) => {
+//     return num1 + num2;
+// }
+
+// console.log(Add(4, 5)); // 9
+
+// const Add = (num1, num2) =>  num1 + num2;// Arrow function with implicit return it will assume the return statement
+
+// console.log(Add(4, 5)); // 9
+
+// const myarray =[1,2,3,4,5];
+
+// myarray.forEach(function() {}); // regular function has its own 'this', it refers to the global object in this case
+
+// myarray.forEach(() => {}); //arrow function does not have its own 'this', it inherits 'this' from the parent scope

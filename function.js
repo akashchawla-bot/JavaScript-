@@ -72,3 +72,17 @@
 
 // // console.log(returnSecondvalue(myNewArrys)); //print 300 in console
 // console.log(returnSecondvalue([100, 200, 300, 400])); //print 200 in console
+
+// // Immediately invoked function expression
+
+// // when we write 2 iife we have to use ; after the first iife
+
+// (function chai() {
+//     // named iife
+//     console.log(`DB Connected`);
+// })();
+
+// ((name) => {
+//     // unnamed iife
+//     console.log(`DB Connected ${name}`);
+// })(`Akash`)//paramearters passed to iief

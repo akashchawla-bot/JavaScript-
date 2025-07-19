@@ -25,13 +25,20 @@
 
 // nullish coalescing operator (??): null or undefined
 
-let val1;
-val1 = 5 ?? 10
-val1 = null ?? 10
-val1 = undefined ?? 10
-val1 = 0 ?? 10
-val1 = "" ?? 10
-val1 = false ?? 10
-val1 = NaN ?? 10
+// let val1;
+// val1 = 5 ?? 10
+// val1 = null ?? 10
+// val1 = undefined ?? 10
+// val1 = 0 ?? 10
+// val1 = "" ?? 10
+// val1 = false ?? 10
+// val1 = NaN ?? 10
 
-console.log(val1);//5
+// console.log(val1);//5
+
+// ternary operator
+// condition ? expressionIfTrue : expressionIfFalse
+
+// const iceTeaPrice = 100;
+
+// iceTeaPrice >= 80 ? console.log("Expensive") : console.log("Cheap");

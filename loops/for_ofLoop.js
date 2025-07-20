@@ -61,3 +61,22 @@
     
 // }
 // // This will iterate over the keys of the object and log the key-value pairs
+
+  const programming = ["js", "HTML", "CSS", "REACT"];
+
+for (const key in programming){
+    // console.log(programming[key]); // output js html css react
+}
+
+const map = new Map()
+map.set(`IN`, `India`)
+map.set(`US`, `United States`)
+map.set(`UK`, `United Kingdom`)
+map.set(`IN`, `India`) 
+
+for (const key in map){
+    console.log(key); // this will not run due to map is not iterable
+}
+
+// for further refrence reffer this link :-  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
+

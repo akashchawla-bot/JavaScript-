@@ -32,16 +32,39 @@ myNum.forEach( (num) => {
 console.log(newNum3);
 */
 
-const books =[
-    { title: 'book One', genre : 'fiction', publish: 1981, edition: 2004 },
-    { title: 'book two', genre : 'Non-fiction', publish: 1982, edition: 2008 },
-    { title: 'book three', genre : 'history', publish: 1991, edition: 2007 },
-    { title: 'book four', genre : 'non-fiction', publish: 1995, edition: 2010 },
-    { title: 'book five', genre : 'science', publish: 20010, edition: 2014 },
-    { title: 'book six', genre : 'fiction', publish: 1996, edition: 2010 },
-    { title: 'book One', genre : 'history', publish: 1990, edition: 1996 },
-]
+// const books =[
+//     { title: 'book One', genre : 'fiction', publish: 1981, edition: 2004 },
+//     { title: 'book two', genre : 'Non-fiction', publish: 1982, edition: 2008 },
+//     { title: 'book three', genre : 'history', publish: 1991, edition: 2007 },
+//     { title: 'book four', genre : 'non-fiction', publish: 1995, edition: 2010 },
+//     { title: 'book five', genre : 'science', publish: 20010, edition: 2014 },
+//     { title: 'book six', genre : 'fiction', publish: 1996, edition: 2010 },
+//     { title: 'book One', genre : 'history', publish: 1993, edition: 1996 },
+// ]
 
-const userBook = books.filter( (bk) => bk.genre === 'history')
+// let userBook = books.filter( (bk) => bk.genre === 'history')
 
-console.log(userBook);
+// userBook = books.filter( (bk) => bk.publish >= '2000')
+// //            or
+// userBook = books.filter( (bk) => {return bk.publish >= '1992'})
+// // to add more that 1 filter
+// userBook = books.filter( (bk) => {
+//     return bk.publish >= '1992' && bk.genre === 'history'
+// })
+
+
+// console.log(userBook);
+
+
+
+// chaining
+
+const myNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+const newNums = myNums
+                    .map((num) => num * 10)
+                    .map((num) => num + 1)
+                    .filter((num) => num >= 40)
+
+console.log(newNums);
+

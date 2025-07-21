@@ -28,32 +28,32 @@ const coding = ["js", "html", "css", "react", "node", "ruby", "python"];
     
 // })
 
-const mycoading =[
-    {
-        langName:"java",
-        ShotName: "js"
-    },
-    {
-        langName:"python",
-        ShotName: "py"
-    },
-    {
-        langName:"ruby",
-        ShotName: "ru"
-    }
-]
+// const mycoading =[
+//     {
+//         langName:"java",
+//         ShotName: "js"
+//     },
+//     {
+//         langName:"python",
+//         ShotName: "py"
+//     },
+//     {
+//         langName:"ruby",
+//         ShotName: "ru"
+//     }
+// ]
 
-mycoading.forEach( (item) => {
-    console.log(item);
+// mycoading.forEach( (item) => {
+//     console.log(item);
     
-})
+// })
 
-mycoading.forEach( (item) => {
-    console.log(item.langName);
+// mycoading.forEach( (item) => {
+//     console.log(item.langName);
     
-})
+// })
 
-mycoading.forEach( (item) => {
-    console.log(item.ShotName);
+// mycoading.forEach( (item) => {
+//     console.log(item.ShotName);
     
-})
+// })

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM- Nodes</title>
+</head>
+<body style = "background-color: #212121; color: #ffffff">
+    
+</body>
+<script>
+    // const div = document.createElement('div');
+    // console.log(div);
+    // div.className = "main";
+    // div.id = Math.round(Math.random()*10+1)
+    // div.style.backgroundColor = "green"
+    const h1 = document.createElement('h1');
+    console.log(h1);
+    h1.setAttribute("title", "genrated title")
+    h1.style.backgroundColor = "green"
+    h1.style.padding= "12px"
+    // h1.innerHTML = "MidnightDev.024"
+    const addH1 = document.createTextNode("MidnightDev.024")
+    h1.appendChild(addH1) // <-- Fix: append to h1
+
+    document.body.appendChild(h1)
+    
+// ...existing code...
+</script>
+</html>

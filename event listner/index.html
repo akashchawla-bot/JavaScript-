@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listener</title>
+    <style>
+        body{
+            background-color: #414141;
+            color: aliceblue ;
+        }
+    </style>
+</head>
+<body>
+    <h1>Amazing image</h1>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="owl" src="https://cdn.britannica.com/66/21766-050-3C7C9E15/owl-American-tropics.jpg" alt="owal"></li>
+            <li><img width="200px" id="photoshop" src="https://r.tourboxtech.com/file/202307/select-the-object-in-photoshop.jpg" alt="photoshop"></li>
+            <li><img width="200px" id="river" src="https://tse4.mm.bing.net/th/id/OIP.DVponYfWxl-fRPR3r-FQYAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="river"></li>
+            <li><img width="200xp" id="japan" src="https://tse1.mm.bing.net/th/id/OIP.oJwIIsJXLC0tGHXsBZUObgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="japan"></li>
+            <li><a style="color: aliceblue" href="https://www.google.com/" id="google">GOOGLE</a></li>
+        </ul>
+    </div>
+    <script>
+        // document.getElementById('owl').onclick = function(){
+        //     alert("owl Clicked")
+        // }
+
+        // document.getElementById('owl').addEventListener('click', function(){
+        //     alert("owl Clicked")
+        // }, false) //always false by default
+
+        // attachEvent
+        // jQuery - on
+
+        // type, timestamp, defaultPrevented
+        // target, toElement, srcElement
+        // clientX, clientY, screenX, screenY
+        // altKey, ctrlKey, shiftKey, keyCode
+
+        // document.getElementById('images').addEventListener('click', function(e){
+        //     console.log("click inside the event")
+        // }, false)
+
+        // document.getElementById('owl').addEventListener('click', function(e){
+        //     console.log("owl Clicked");
+        // }, false)
+
+        // if we click on any img it will print "click in side the image "
+        // if we click on owl it will print "clicked inside the image owl clicked"
+
+        // document.getElementById('images').addEventListener('click', function(e){
+        //     console.log("click inside the image")
+        // }, false)
+
+        // document.getElementById('owl').addEventListener('click', function(e){
+        //     console.log("owl Clicked");
+        //     e.stopPropagation()
+        // }, false)
+
+        // stop propogation will stop the above print in case owl is clicked it will print "owl is clicked"
+        // and will print "click inside the image" if other image is clicked
+        
+        document.getElementById('google').addEventListener('clcik',function(e){
+            e.preventDefault();
+            console.log("google click");
+        },false)
+
+</script>
+</body>
+</html>

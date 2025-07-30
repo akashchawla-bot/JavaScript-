@@ -62,10 +62,31 @@
         // stop propogation will stop the above print in case owl is clicked it will print "owl is clicked"
         // and will print "click inside the image" if other image is clicked
         
-        document.getElementById('google').addEventListener('clcik',function(e){
-            e.preventDefault();
-            console.log("google click");
-        },false)
+        // document.getElementById('google').addEventListener('click',function (e){
+        //     e.preventDefault ();
+        //     console.log("google click");
+        // },false)
+
+        // document.querySelector('#images').addEventListener('click', function(e){
+        //     console.log(e.target.parentNode);
+        //     let removeIt = e.target.parentNode
+        //     removeIt.remove()
+        // })
+
+        // document.querySelector('#images').addEventListener('click', function(e){
+        //     console.log(e.target.parentNode);
+        //     let removeIt = e.target.parentNode
+        //     removeIt.parentNode.removeChild(removeIt)
+        // })
+
+        // document.querySelector('#images').addEventListener('click', function(e){
+        //     console.log(e.target.tagName);
+        //     if (e.target.tagName === 'IMG') {
+        //         console.log(e.target.id);
+        //         let removeIt = e.target.parentNode
+        //         removeIt.remove()    
+        //     }
+        // })
 
 </script>
 </body>

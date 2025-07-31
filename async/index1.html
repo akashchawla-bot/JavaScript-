@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,10 +10,60 @@
     <button id="start">START</button>
     <button id="stop">STOP</button>
     <script>
-        let sayDate = function(){
-            console.log("HITESH", Date.now());
+
+        let intervalId = null;
+
+        const start = function() {
+            if (!intervalId) {
+                intervalId = setInterval(function(str) {
+                console.log(str, Date.now());
+            }, 1000, "A_cash Coder");
         }
-        setInterval(sayDate,1000)
+    }
+        /*
+        this will not run because passing sayDate to clearInterval, but sayDate is a function, not the interval ID returned by setInterval.
+
+        // let sayDate;
+        // const start = function(){
+        //     if(!sayDate){
+        //         sayDate = function(str){
+        //             console.log(str, Date.now());
+        //         }
+        //         let set = setInterval(sayDate, 1000, "A_cash Coder");
+        //     }
+        // }
+        */
+
+        const stop = function(){
+            clearInterval(intervalId);
+            sayDate = null;
+        }
+
+        document.querySelector('#start').addEventListener('click', start);
+        document.querySelector('#stop').addEventListener('click', stop);
+
+        // let sayDate = function(str){
+        //     console.log(str, Date.now());
+        // }
+        // let set = setInterval(sayDate,1000, "A_cash Coder")
+        // clearInterval(set)\
+
+
+        // let sayDate;
+        // document.getElementById('start').addEventListener('click', function(){
+        //     if(!sayDate){
+        //         sayDate = function(str){
+        //     console.log(str, Date.now());
+        //     }
+        // let set = setInterval(sayDate, 1000, "A_cash Coder")
+        //     }
+            
+        // })
+
+        // document.getElementById('stop').addEventListener('click', function(){
+        //     clearInterval(sayDate)
+        //     sayDate = null
+        // })
     </script>
 </body>
-</html>
+</html> -->

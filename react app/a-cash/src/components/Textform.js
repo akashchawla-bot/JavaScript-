@@ -22,6 +22,10 @@ const handleTrimClick = () => {
   let newText = text.split(/\s+/).join(" ").trim();
   setText(newText);
 };
+const handleCopyClick = () => {
+  // Copy the text to the clipboard
+  navigator.clipboard.writeText(text);
+};
 
 const handleOnChange = (event) => {
 // console.log("On Change");
@@ -47,6 +51,7 @@ return (
     <button className="btn btn-primary mx-2" onClick={handleLoClick}>Convert to LOWERCASE</button>
     <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
     <button className="btn btn-primary mx-2" onClick={handleTrimClick}>Remove Spaces</button>
+    <button className="btn btn-primary mx-2" onClick={handleCopyClick}>Copy Text</button>
   </div>
   <div className="container my-3">
     <h2> Your Text Summary</h2>

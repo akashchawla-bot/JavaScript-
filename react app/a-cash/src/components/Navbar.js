@@ -43,8 +43,8 @@ return (
             Search
           </button>
         </form> */}
-        <div className="form-check form-switch">
-          <input className="form-check-input" type="checkbox" role="switch" id="switchCheckDefault" />
+        <div className={`form-check form-switch text-bg-${props.mode}`}>
+          <input className="form-check-input" type="checkbox" role="switch" id="switchCheckDefault" onClick={props.toggleMode}/>
           <label className="form-check-label" htmlFor="switchCheckDefault">Enable Dark Mode</label>
         </div>
       </div>

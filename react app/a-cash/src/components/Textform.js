@@ -6,25 +6,30 @@ const handleUpClick = () =>{
 // console.log("UpperCase was clicked");
 let newText = text.toUpperCase();
 setText(newText);  
+props.showAlert("Converted to Uppercase", "success");
 }
 const handleLoClick = () =>{
 // console.log("Lowercase was clicked");
 let newText = text.toLowerCase();
 setText(newText);  
+props.showAlert("Converted to Lowercase", "success");
 }
 const handleClearClick = () =>{
 // console.log("Clear was clicked");
 let newText = "";
 setText(newText);  
+props.showAlert("Text Cleared", "success");
 }
 const handleTrimClick = () => {
   // Remove extra spaces between words and trim leading/trailing spaces
   let newText = text.split(/\s+/).join(" ").trim();
   setText(newText);
+  props.showAlert("Spaces Removed", "success");
 };
 const handleCopyClick = () => {
   // Copy the text to the clipboard
   navigator.clipboard.writeText(text);
+  props.showAlert("Text Copied to Clipboard", "success");
 };
 
 const handleOnChange = (event) => {

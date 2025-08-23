@@ -4,7 +4,12 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Textform from "./components/Textform";
 import About from "./components/About";
-import Alert from "./components/Alert";
+// import Alert from "./components/Alert";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 function App() {
 const [mode, setMode] = useState('light'); // 'light' or 'dark'
@@ -37,12 +42,18 @@ const toggleMode = () => {
 
 return (
   <>
+  <Router>
     <Navbar title="TextUtils" aboutText="About Us" mode={mode} toggleMode={toggleMode} />
-    <Alert alert={alert}/>
+    {/* <Alert alert={alert}/> */}
     <div className="container my-3">
-      <Textform heading="Enter the Text to Analyse" mode={mode} showAlert={showAlert} toggleMode={toggleMode}/>
-      <About mode={mode} toggleMode={toggleMode}/>
+    <Routes>
+          <Route exact path="/about" element={<About mode={mode} toggleMode={toggleMode}/>} />
+          <Route exact path="/" element={<Textform heading="Enter the Text to Analyse" mode={mode} showAlert={showAlert} toggleMode={toggleMode}/>} />          
+    </Routes>
+      {/* <Textform heading="Enter the Text to Analyse" mode={mode} showAlert={showAlert} toggleMode={toggleMode}/> */}
+      {/* <About mode={mode} toggleMode={toggleMode}/> */}
     </div>
+    </Router>
   </>
 );
 }

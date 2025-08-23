@@ -22,7 +22,7 @@ export default function About(props) {
                 WebkitTextFillColor: props.mode === 'dark' ? 'white' : 'black'
               }}
             >
-              Accordion Item #1
+              Button Functionality
             </button>
           </h2>
           <div
@@ -31,14 +31,15 @@ export default function About(props) {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              <strong>This is the first item’s accordion body.</strong> It is
-              shown by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It’s also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              <strong>Text Manipulation Tools:</strong> Our application provides powerful text processing capabilities through intuitive buttons:
+              <ul className="mt-3">
+                <li><strong>Convert to Uppercase:</strong> Instantly transform all text to capital letters for emphasis or formatting needs</li>
+                <li><strong>Convert to Lowercase:</strong> Change text to small letters for consistent formatting</li>
+                <li><strong>Clear Text:</strong> Remove all content with one click for a fresh start</li>
+                <li><strong>Copy Text:</strong> Easily copy processed text to your clipboard</li>
+                <li><strong>Remove Extra Spaces:</strong> Clean up text by eliminating unnecessary spacing</li>
+              </ul>
+              Each button is designed to be responsive and provides immediate feedback for a smooth user experience.
             </div>
           </div>
         </div>
@@ -57,7 +58,7 @@ export default function About(props) {
                 WebkitTextFillColor: props.mode === 'dark' ? 'white' : 'black'
               }}
             >
-              Accordion Item #2
+              Dark Mode Features
             </button>
           </h2>
           <div
@@ -66,14 +67,15 @@ export default function About(props) {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              <strong>This is the second item’s accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It’s also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              <strong>Enhanced User Experience:</strong> Our dark mode feature provides a comfortable viewing experience in low-light conditions:
+              <ul className="mt-3">
+                <li><strong>Eye-Friendly:</strong> Reduces eye strain during extended use, especially in dimly lit environments</li>
+                <li><strong>Battery Efficient:</strong> On OLED displays, dark mode can help conserve battery life</li>
+                <li><strong>Modern Aesthetics:</strong> Sleek, contemporary design that's easy on the eyes</li>
+                <li><strong>Consistent Theming:</strong> All components automatically adapt to maintain visual harmony</li>
+                <li><strong>Accessibility:</strong> Better contrast ratios for users with visual sensitivities</li>
+              </ul>
+              Toggle between light and dark themes using the theme switcher in the navigation bar.
             </div>
           </div>
         </div>
@@ -92,7 +94,7 @@ export default function About(props) {
                 WebkitTextFillColor: props.mode === 'dark' ? 'white' : 'black'
               }}
             >
-              Accordion Item #3
+              Text Summary & Analytics
             </button>
           </h2>
           <div
@@ -101,14 +103,15 @@ export default function About(props) {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              <strong>This is the third item’s accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It’s also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              <strong>Comprehensive Text Analysis:</strong> Get instant insights about your text content:
+              <ul className="mt-3">
+                <li><strong>Word Count:</strong> Real-time counting of words as you type or paste text</li>
+                <li><strong>Character Count:</strong> Track total characters including spaces and punctuation</li>
+                <li><strong>Reading Time:</strong> Estimate how long it takes to read your content</li>
+                <li><strong>Paragraph Count:</strong> Identify the number of paragraphs for better structure</li>
+                <li><strong>Text Statistics:</strong> Comprehensive overview of your document's composition</li>
+              </ul>
+              These analytics help you optimize your content length and structure for better readability and engagement.
             </div>
           </div>
         </div>

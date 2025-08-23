@@ -37,7 +37,7 @@ const handleOnChange = (event) => {
 setText(event.target.value);
 }
 
-const [text, setText] = useState("Enter Text Here");
+const [text, setText] = useState("");
 // text ="new text"; // wrong way to change the state
 // setText("new text"); // correct way to change the state  
 return (

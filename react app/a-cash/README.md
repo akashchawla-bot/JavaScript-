@@ -1,6 +1,6 @@
-# TextUtils
+# textify-tools
 
-TextUtils is a modern React-based web application designed to analyze and manipulate text efficiently. The app provides a user-friendly interface with dark mode support, responsive design, and comprehensive text processing capabilities.
+textify-tools is a modern React-based web application designed to analyze and manipulate text efficiently. The app provides a user-friendly interface with dark mode support, responsive design, and comprehensive text processing capabilities.
 
 ## ✨ Features
 
@@ -41,8 +41,8 @@ TextUtils is a modern React-based web application designed to analyze and manipu
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/textutils.git
-   cd textutils
+   git clone https://github.com/yourusername/textify-tools.git
+cd textify-tools
    ```
 
 2. **Install dependencies**:

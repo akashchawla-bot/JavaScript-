@@ -1,19 +1,25 @@
 // import logo from './logo.svg';
-import React,{ useState } from "react";
+import React,{ useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Textform from "./components/Textform";
 import About from "./components/About";
-// import Alert from "./components/Alert";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from "react-router-dom";
+import Alert from "./components/Alert";
+import Footer from "./components/Footer";
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route
+// } from "react-router-dom";
 
 function App() {
 const [mode, setMode] = useState('light'); // 'light' or 'dark'
 const [alert, setAlert] = useState(null); // null is for no alert
+
+// Show welcome alert when component mounts
+useEffect(() => {
+  showAlert("Welcome to textify-tools", "success");
+}, []);
 
 // showAlert is a function to show the alert
 const showAlert = (message, type) => {
@@ -42,18 +48,19 @@ const toggleMode = () => {
 
 return (
   <>
-  <Router>
-    <Navbar title="TextUtils" aboutText="About Us" mode={mode} toggleMode={toggleMode} />
-    {/* <Alert alert={alert}/> */}
+  {/* <Router> */}
+    <Navbar title="textify-tools" homeText="Home" aboutText="About Us" mode={mode} toggleMode={toggleMode} />
+    <Alert alert={alert}/>
     <div className="container my-3">
-    <Routes>
+    {/* <Routes>
           <Route exact path="/about" element={<About mode={mode} toggleMode={toggleMode}/>} />
           <Route exact path="/" element={<Textform heading="Enter the Text to Analyse" mode={mode} showAlert={showAlert} toggleMode={toggleMode}/>} />          
-    </Routes>
-      {/* <Textform heading="Enter the Text to Analyse" mode={mode} showAlert={showAlert} toggleMode={toggleMode}/> */}
-      {/* <About mode={mode} toggleMode={toggleMode}/> */}
+    </Routes> */}
+      <Textform heading="Enter the Text to Analyse" mode={mode} showAlert={showAlert} toggleMode={toggleMode} id="home"/>
+      <About mode={mode} toggleMode={toggleMode} about="about"/>
     </div>
-    </Router>
+    <Footer mode={mode} />
+    {/* </Router> */}
   </>
 );
 }

@@ -3,7 +3,7 @@
 export default function About(props) {
 
   return (
-    <div className="container" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
+    <div id={props.about} className="container" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
       <h1 className="my-4">About Us</h1>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item" style={{ backgroundColor: props.mode === 'dark' ? '#343a40' : 'white', color: props.mode === 'dark' ? 'white' : 'black' }}>
@@ -31,7 +31,7 @@ export default function About(props) {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              <strong>Text Manipulation Tools:</strong> Our application provides powerful text processing capabilities through intuitive buttons:
+              <strong>Text Manipulation Tools:</strong> Our textify-tools application provides powerful text processing capabilities through intuitive buttons:
               <ul className="mt-3">
                 <li><strong>Convert to Uppercase:</strong> Instantly transform all text to capital letters for emphasis or formatting needs</li>
                 <li><strong>Convert to Lowercase:</strong> Change text to small letters for consistent formatting</li>
@@ -75,7 +75,7 @@ export default function About(props) {
                 <li><strong>Consistent Theming:</strong> All components automatically adapt to maintain visual harmony</li>
                 <li><strong>Accessibility:</strong> Better contrast ratios for users with visual sensitivities</li>
               </ul>
-              Toggle between light and dark themes using the theme switcher in the navigation bar.
+                Toggle between light and dark themes using the theme switcher in the navigation bar of textify-tools.
             </div>
           </div>
         </div>
@@ -103,7 +103,7 @@ export default function About(props) {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              <strong>Comprehensive Text Analysis:</strong> Get instant insights about your text content:
+                <strong>Comprehensive Text Analysis:</strong> Get instant insights about your text content with textify-tools:
               <ul className="mt-3">
                 <li><strong>Word Count:</strong> Real-time counting of words as you type or paste text</li>
                 <li><strong>Character Count:</strong> Track total characters including spaces and punctuation</li>
@@ -111,7 +111,7 @@ export default function About(props) {
                 <li><strong>Paragraph Count:</strong> Identify the number of paragraphs for better structure</li>
                 <li><strong>Text Statistics:</strong> Comprehensive overview of your document's composition</li>
               </ul>
-              These analytics help you optimize your content length and structure for better readability and engagement.
+                These analytics help you optimize your content length and structure for better readability and engagement using textify-tools.
             </div>
           </div>
         </div>

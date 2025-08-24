@@ -26,9 +26,20 @@ const handleTrimClick = () => {
   setText(newText);
   props.showAlert("Spaces Removed", "success");
 };
+// const handleCopyClick = () => {
+//   // Copy the text to the clipboard
+//   navigator.clipboard.writeText(text);
+//   props.showAlert("Text Copied to Clipboard", "success");
+// };
+
 const handleCopyClick = () => {
-  // Copy the text to the clipboard
-  navigator.clipboard.writeText(text);
+  // Simple fallback that works everywhere
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textArea);
   props.showAlert("Text Copied to Clipboard", "success");
 };
 
@@ -41,7 +52,7 @@ const [text, setText] = useState("");
 // text ="new text"; // wrong way to change the state
 // setText("new text"); // correct way to change the state  
 return (
-  <>
+  <div id={props.id}>
     <h1 style={{color: props.mode === 'dark' ? 'white' : 'black'}}>{props.heading}</h1>
     <div className="mb-3">
       <textarea
@@ -55,11 +66,11 @@ return (
           color: 'black'
       }}></textarea>
       <br />
-      <button className="btn btn-primary mx-2" style={{color: props.mode === 'dark' ? 'white' : 'black'}} onClick={handleUpClick}>Convert to UPPERCASE</button>
-      <button className="btn btn-primary mx-2" style={{color: props.mode === 'dark' ? 'white' : 'black'}} onClick={handleLoClick}>Convert to LOWERCASE</button>
-      <button className="btn btn-primary mx-2" style={{color: props.mode === 'dark' ? 'white' : 'black'}} onClick={handleClearClick}>Clear Text</button>
-      <button className="btn btn-primary mx-2" style={{color: props.mode === 'dark' ? 'white' : 'black'}} onClick={handleTrimClick}>Remove Spaces</button>
-      <button className="btn btn-primary mx-2" style={{color: props.mode === 'dark' ? 'white' : 'black'}} onClick={handleCopyClick}>Copy Text</button>
+      <button className="btn btn-primary my-2 mx-2" style={{color: props.mode === 'dark' ? 'white' : 'black'}} onClick={handleUpClick}>Convert to UPPERCASE</button>
+      <button className="btn btn-primary my-2 mx-2" style={{color: props.mode === 'dark' ? 'white' : 'black'}} onClick={handleLoClick}>Convert to LOWERCASE</button>
+      <button className="btn btn-primary my-2 mx-2" style={{color: props.mode === 'dark' ? 'white' : 'black'}} onClick={handleClearClick}>Clear Text</button>
+      <button className="btn btn-primary my-2 mx-2" style={{color: props.mode === 'dark' ? 'white' : 'black'}} onClick={handleTrimClick}>Remove Spaces</button>
+      <button className="btn btn-primary my-2 mx-2" style={{color: props.mode === 'dark' ? 'white' : 'black'}} onClick={handleCopyClick}>Copy Text</button>
     </div>
     <div className="container my-3">
       <h2 style={{color: props.mode === 'dark' ? 'white' : 'black'}}>Your Text Summary</h2>
@@ -80,6 +91,6 @@ return (
         {text.length > 0 ? text : "Nothing to preview!"}
       </p>
     </div>
-  </>
+  </div>
 );
 }

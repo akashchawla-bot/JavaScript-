@@ -46,11 +46,12 @@ render() {
     return (
     <div className='container my-3'>
         <h2>NewsHatch - Top Headlines</h2>
-        {this.state.articles.map((Element) => {})}
         <div className='row'>
-            <div className='col-md-3'>
-                <NewItem title="My Title" description="My Description" imgURL="https://img1.hscicdn.com/image/upload/f_auto,t_ds_wide_w_1280,q_70/lsci/db/PICTURES/CMS/303200/303217.6.jpg" newURL="To DO"/>
+          {this.state.articles.map((Element) => {
+              return <div className='col-md-4' key={Element.url}>
+              <NewItem title={Element.title.slice(0, 40)} description={Element.description.slice(0, 88)} imgURL={Element.urlToImage} NewsUrl={Element.url}/>
             </div>
+          })}
         </div>
     </div>
     )

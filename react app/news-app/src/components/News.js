@@ -1,61 +1,47 @@
-import React, { Component } from 'react'
-import NewItem from './NewItem'
+import React, { Component } from 'react';
+import NewItem from './NewItem';
 
 export class News extends Component {
-    article = [
-    {
-      "source": { "id": "bbc-sport", "name": "BBC Sport" },
-      "author": null,
-      "title": "The Hundred 2025 LIVE: Oval Invincibles vs London Spirit - cricket score, radio & updates",
-      "description": "Oval Invincibles face London Spirit in the men's Hundred - follow live scores, radio commentary and updates.",
-      "url": "http://www.bbc.co.uk/sport/cricket/live/cq8zvkn9z1nt",
-      "urlToImage": "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/8f66/live/80333010-81d9-11f0-83cc-c5da98c419b8.jpg",
-      "publishedAt": "2025-08-25T17:52:29.5532997Z",
-      "content": "Chris GreenWelsh Fire all-rounder on BBC 5 Sports Extra\r\nThat is the slower delivery working really well for Tom Curran. \r\nRestricting the boundary options, as they know Jamie Smith wants pace on it.… [+77 chars]"
-    },
-    {
-      "source": { "id": "espn-cric-info", "name": "ESPN Cric Info" },
-      "author": null,
-      "title": "PCB hands Umar Akmal three-year ban from all cricket | ESPNcricinfo.com",
-      "description": "Penalty after the batsman pleaded guilty to not reporting corrupt approaches | ESPNcricinfo.com",
-      "url": "http://www.espncricinfo.com/story/_/id/29103103/pcb-hands-umar-akmal-three-year-ban-all-cricket",
-      "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg",
-      "publishedAt": "2020-04-27T11:41:47Z",
-      "content": "Umar Akmal's troubled cricket career has hit its biggest roadblock yet, with the PCB handing him a ban from all representative cricket for three years after he pleaded guilty of failing to report det… [+1506 chars]"
-    },
-    {
-      "source": { "id": "espn-cric-info", "name": "ESPN Cric Info" },
-      "author": null,
-      "title": "What we learned from watching the 1992 World Cup final in full again | ESPNcricinfo.com",
-      "description": "Wides, lbw calls, swing - plenty of things were different in white-ball cricket back then | ESPNcricinfo.com",
-      "url": "http://www.espncricinfo.com/story/_/id/28970907/learned-watching-1992-world-cup-final-full-again",
-      "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219926_1296x729.jpg",
-      "publishedAt": "2020-03-30T15:26:05Z",
-      "content": "Last week, we at ESPNcricinfo did something we have been thinking of doing for eight years now: pretend-live ball-by-ball commentary for a classic cricket match. We knew the result, yes, but we tried… [+6823 chars]"
-    }
-  ]
-    constructor() {
+  constructor() {
     super();
-    console.log("Hello I am a constructor from News component");
-    this.state ={
-        articles: this.article,
-        loading: false
-    }
-}
-render() {
+    this.state = {
+      articles: [],
+      loading: true, // Set initial loading to true
+    };
+  }
+
+  async componentDidMount() {
+    let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=b796f5b8bccd4e868cfd3f080e040c24";
+    let data = await fetch(url);
+    let parsData = await data.json();
+    this.setState({ articles: parsData.articles, loading: false }); // Set loading to false after fetch
+  }
+
+  render() {
     return (
-    <div className='container my-3'>
-        <h2>NewsHatch - Top Headlines</h2>
+      <div className='container my-3'>
+        <h2 className='text-center'>NewsHatch - Top Headlines</h2>
+        
+        {/* Display a loading message while fetching data */}
+        {this.state.loading && <p className='text-center'>Loading...</p>}
+
         <div className='row'>
-          {this.state.articles.map((Element) => {
-              return <div className='col-md-4' key={Element.url}>
-              <NewItem title={Element.title.slice(0, 40)} description={Element.description.slice(0, 88)} imgURL={Element.urlToImage} NewsUrl={Element.url}/>
-            </div>
+          {!this.state.loading && this.state.articles.map((element) => {
+            return (
+              <div className='col-md-4' key={element.url}>
+                <NewItem
+                  title={element.title ? element.title.slice(0, 45) : "No Title Available for this article. Click Read More to find out."}
+                  description={element.description ? element.description.slice(0, 88) : "No description available for this article. Click Read More to find out."}
+                  imgURL={element.urlToImage? element.urlToImage : "https://cdn.mos.cms.futurecdn.net/YMK58FXgvqcYXpiT6jCW39.jpg"}
+                  NewsUrl={element.url}
+                />
+              </div>
+            );
           })}
         </div>
-    </div>
-    )
-}
+      </div>
+    );
+  }
 }
 
-export default News
+export default News;

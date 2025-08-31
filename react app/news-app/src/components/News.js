@@ -17,6 +17,40 @@ export class News extends Component {
     this.setState({ articles: parsData.articles, loading: false }); // Set loading to false after fetch
   }
 
+  handleNextClick = async () => {
+    console.log("next");
+
+    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=b796f5b8bccd4e868cfd3f080e040c24&page=${this.state.page + 1}`;
+    let data = await fetch(url);
+    let parsData = await data.json();
+    this.setState({
+      page: this.state.page + 1,
+      articles: parsData.articles,
+    });
+  }
+
+  handlePrevClick = async () => {
+    console.log("Previous");
+    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=b796f5b8bccd4e868cfd3f080e040c24&page=${this.state.page - 1}`;
+    let data = await fetch(url);
+    let parsData = await data.json();
+    this.setState({
+      page: this.state.page - 1,
+      articles: parsData.articles,
+    });
+  }
+
+  handlePrevClick = async () => {
+    console.log("Previous");
+    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=b796f5b8bccd4e868cfd3f080e040c24&page=${this.state.page - 1}`;
+    let data = await fetch(url);
+    let parsData = await data.json();
+    this.setState({
+      page: this.state.page - 1,
+      articles: parsData.articles,
+    });
+  }
+
   render() {
     return (
       <div className='container my-3'>
@@ -38,6 +72,10 @@ export class News extends Component {
               </div>
             );
           })}
+        </div>
+        <div className='container d-flex justify-content-between'>
+        <button type="button" className="btn btn-dark" onClick={this.handlePrevClick}>&larr; Previous</button>
+        <button type="button" className="btn btn-dark" onClick={this.handleNextClick}>Next &rarr;</button>
         </div>
       </div>
     );

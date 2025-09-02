@@ -1,78 +1,121 @@
 import React, { Component } from 'react';
 import NewItem from './NewItem';
+import Spinner from './spinner';
 
 export class News extends Component {
   constructor() {
     super();
     this.state = {
-      articles: [], // Set initial articles to an empty array
-      loading: true, // Set initial loading to true
-      page: 1, // Set initial page to 1
-      totalResults: 0, // Set initial totalResults to 0
+      articles: [],           // Stores fetched news articles
+      loading: true,          // Controls spinner visibility
+      nextPage: null,         // Token for the next page (from API)
+      currentPageToken: null, // Token for the current page
+      pageHistory: [],        // Stack of previous page tokens for back navigation
     };
   }
 
-  async componentDidMount() {
-    let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=b796f5b8bccd4e868cfd3f080e040c24";
-    let data = await fetch(url);
-    let parsData = await data.json();
-    this.setState({ 
-      articles: parsData.articles,
-      loading: false,
-      totalResults: parsData.totalResults,
-     }); // Set loading to false after fetch
+  // ✅ Modified to support cursor-based pagination using page tokens
+  async fetchNews(pageToken = null, isNext = true) {
+    this.setState({ loading: true });
+
+    let url = `https://newsdata.io/api/1/news?apikey=pub_6c50e154e9a241de9bfbd20e7a80d525&country=us`;
+    if (pageToken) {
+      url += `&page=${pageToken}`; // Append token if available
+    }
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+
+      const articlesArray = Array.isArray(data.results) ? data.results : [];
+
+      this.setState((prevState) => ({
+        articles: articlesArray,
+        loading: false,
+        nextPage: data.nextPage || null,
+        currentPageToken: pageToken,
+        // ✅ Push current token to history if going forward, pop if going back
+        pageHistory: isNext
+          ? [...prevState.pageHistory, pageToken]
+          : prevState.pageHistory.slice(0, -1),
+      }));
+    } catch (error) {
+      console.error("API fetch error:", error);
+      this.setState({ articles: [], loading: false });
+    }
   }
 
-  handleNextClick = async () => {
-    console.log("next");
-
-    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=b796f5b8bccd4e868cfd3f080e040c24&page=${this.state.page + 1}`;
-    let data = await fetch(url);
-    let parsData = await data.json();
-    this.setState({
-      page: this.state.page + 1,
-      articles: parsData.articles,
-      totalResults: parsData.totalResults,
-    });
+  // ✅ Initial fetch on mount
+  componentDidMount() {
+    this.fetchNews(); // No token for first page
   }
 
-  handlePrevClick = async () => {
-    console.log("Previous");
-    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=b796f5b8bccd4e868cfd3f080e040c24&page=${this.state.page - 1}`;
-    let data = await fetch(url);
-    let parsData = await data.json();
-    this.setState({
-      page: this.state.page - 1,
-      articles: parsData.articles,
-    });
-  }
+  // ✅ Handles forward navigation using nextPage token
+  handleNextClick = () => {
+    if (this.state.nextPage) {
+      this.fetchNews(this.state.nextPage, true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
+  // ✅ Handles backward navigation using stored history
+  handlePrevClick = () => {
+    const history = this.state.pageHistory;
+    if (history.length >= 2) {
+      const previousToken = history[history.length - 2];
+      this.fetchNews(previousToken, false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   render() {
+    const { articles, loading, nextPage, pageHistory } = this.state;
+
     return (
       <div className='container my-3'>
         <h2 className='text-center'>NewsHatch - Top Headlines</h2>
-        
-        {/* Display a loading message while fetching data */}
-        {this.state.loading && <p className='text-center'>Loading...</p>}
+
+        {/* ✅ Show spinner while loading */}
+        {loading && <Spinner />}
 
         <div className='row'>
-          {!this.state.loading && this.state.articles.map((element) => {
-            return (
-              <div className='col-md-4' key={element.url}>
+          {/* ✅ Render articles only if valid and non-empty */}
+          {!loading && Array.isArray(articles) && articles.length > 0 ? (
+            articles.map((element) => (
+              <div className='col-md-4' key={element.link}>
                 <NewItem
-                  title={element.title ? element.title.slice(0, 45) : "No Title Available for this article. Click Read More to find out."}
-                  description={element.description ? element.description.slice(0, 88) : "No description available for this article. Click Read More to find out."}
-                  imgURL={element.urlToImage? element.urlToImage : "https://cdn.mos.cms.futurecdn.net/YMK58FXgvqcYXpiT6jCW39.jpg"}
-                  NewsUrl={element.url}
+                  title={element.title ? element.title.slice(0, 45) : "No Title Available"}
+                  description={element.description ? element.description.slice(0, 88) : "No description available"}
+                  imgURL={element.image_url || "https://cdn.mos.cms.futurecdn.net/YMK58FXgvqcYXpiT6jCW39.jpg"}
+                  NewsUrl={element.link}
                 />
               </div>
-            );
-          })}
+            ))
+          ) : (
+            <div className="text-center my-5">
+              <h5>No news articles found. Try refreshing or check your API key.</h5>
+            </div>
+          )}
         </div>
+
+        {/* ✅ Pagination buttons with proper enable/disable logic */}
         <div className='container d-flex justify-content-between'>
-        <button disabled={this.state.page <= 1} type="button" className="btn btn-dark" onClick={this.handlePrevClick}>&larr; Previous</button>
-        <button disabled={this.state.page >= Math.ceil(this.state.totalResults/20)} type="button" className="btn btn-dark" onClick={this.handleNextClick}>Next &rarr;</button>
+          <button
+            disabled={pageHistory.length < 2}
+            type="button"
+            className="btn btn-dark"
+            onClick={this.handlePrevClick}
+          >
+            &larr; Previous
+          </button>
+          <button
+            disabled={!nextPage}
+            type="button"
+            className="btn btn-dark"
+            onClick={this.handleNextClick}
+          >
+            Next &rarr;
+          </button>
         </div>
       </div>
     );

@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.img-fit {
+  width: 100%;           /* Stretch to full width of container */
+  height: 200px;         /* Fixed height */
+  object-fit: cover;     /* Crop and scale image to fill box */
+  object-position: center; /* Center the image */
+  border-radius: 4px;    /* Optional: smooth corners */
+}

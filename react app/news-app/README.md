@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+📰 NewsHatch
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+NewsHatch is a responsive React-based news web app that fetches real-time headlines using the NewsData.io API. It features smooth pagination, clean UI cards, and dynamic content loading — designed to deliver a fast and intuitive news browsing experience.
 
-## Available Scripts
+🚀 Live Preview
+Coming soon...
+You can deploy it using Netlify, Vercel, or GitHub Pages.
 
-In the project directory, you can run:
+📸 Screenshots
+Add screenshots here once deployed or during development.
 
-### `npm start`
+✨ Features
+- 🔄 Real-time news from the US using NewsData.io
+- 🧭 Cursor-based pagination with Next/Previous navigation
+- 🎨 Responsive card layout with cropped images and clean typography
+- 🧠 Fallback handling for empty results and API errors
+- ⚡ Smooth scroll transitions between pages
+- 🧹 Modular components for scalability and reuse
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+🛠️ Tech Stack
+| Technology   | Purpose                          |
+|--------------|----------------------------------|
+| React.js     | Frontend framework               |
+| Bootstrap    | Styling and layout               |
+| NewsData.io  | News API                         |
+| JavaScript   | Logic and interactivity          |
+| CSS          | Custom styling for image fit     |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+📦 Installation
+```bash
+git clone https://github.com/your-username/news-hatch.git
+cd news-hatch
+npm install
+npm start
+```
 
-### `npm test`
+🔑 API Setup
+- Sign up at NewsData.io
+- Get your API key
+- Replace the placeholder in News.js:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```javascript
+const url = `https://newsdata.io/api/1/news?apikey=YOUR_API_KEY&country=us`;
+```
+🧠 Developer Notes
+- The app uses cursor-based pagination, so instead of page numbers, it relies on nextPage tokens returned by the API.
+- Previous page navigation is handled by storing a history of tokens in state.
+- Image cropping is handled using object-fit: cover to maintain layout consistency.
 
-### `npm run build`
+📁 Folder Structure
+```
+src/
+├── components/
+│   ├── News.js
+│   ├── NewItem.js
+│   └── Spinner.js
+├── App.js
+├── index.js
+└── App.css
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+🙋‍♂️ About the Developer
+Built by Akash Chawla, a third-year BCA student passionate about frontend development, UI design, and building production-ready apps.
+This project is part of his journey toward becoming a full-stack MERN developer.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+📌 Future Improvements
+- 🔍 Add search and category filters
+- 🌐 Support multiple countries and languages
+- 📱 Convert to infinite scroll for smoother UX
+- 🧪 Add unit tests and error boundaries
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+📄 License
+This project is open-source and available under the MIT License.

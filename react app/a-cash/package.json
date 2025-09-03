@@ -2,6 +2,7 @@
   "name": "a-cash",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://akashchawla-bot.github.io/javascript/a-cash",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.6.4",
